@@ -3,7 +3,9 @@ const router=express.Router();
 const Blog=require('../models/blog')
 //get data from db
 router.get('/blog',(req,res)=>{
-   
+   Blog.find({}).then((blog)=>{
+       res.send(blog)
+   });
 });
 //add data to db
 router.post('/blog',(req,res,next)=>{
