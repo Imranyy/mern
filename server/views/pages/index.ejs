@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs')%>
+<body>
+    <%- include('../partials/nav.ejs')%>
+<!--content-->
+    <div class="container">
+        <h5 class="light green-text customfont">All Blogs..</h5><br/>
+          <%if(Blogs.length>0){%>
+            <%Blogs.forEach(blog=>{%>
+              <a href="/blog/<%=blog._id%>">
+                <div class="card">
+                  <div class="card-title"><%=blog.title%></div>
+                  <div class="card-content"><%=blog.snippet%></div>
+                </div>
+              </a>
+            <%})%>
+            <%}else{%>
+              <p>No blogs to show</p>
+            <%}%>
+         <br/>
+    </div>
+     
+    <%- include('../partials/footer.ejs')%>
+  <!--  Scripts-->
+  <script src="./js/materialize.min.js"></script>
+  <script src="./js/init.js" type="module"></script>
+  </body>
+</html>

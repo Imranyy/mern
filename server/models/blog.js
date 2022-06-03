@@ -7,11 +7,15 @@ const BlogSchema=new Schema({
         type:String,
         required:[true,'Blog title required!!']
     },
+    snippet:{
+        type:String,
+        required:[true,'Blog snippet required!!']
+    },
     content:{
         type:String,
         required:[true,'Blog Content required!!']
     }
-});
+},{timestamps:true});
 //model
 const Blog=mongoose.model('blog',BlogSchema);
  
