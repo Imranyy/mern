@@ -6,7 +6,7 @@ const mongoose=require('mongoose')
 
 const app=express();
 //connect to mongdb
-mongoose.connect(process.env.DATABASE,{
+mongoose.connect(process.env.DATABASE||'mongodb://localhost/blog',{
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then((res)=>{
