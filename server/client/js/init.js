@@ -5,4 +5,6 @@ document.addEventListener('DOMContentLoaded', function(){
   //modal
   const modals=document.querySelectorAll('.modal');
   M.Modal.init(modals);
+  
   });
+  

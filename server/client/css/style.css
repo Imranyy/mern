@@ -6,6 +6,15 @@ body{
   font-family:  source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
 }
+/*image upload label*/
+#form{
+  margin: 30px auto 10px;
+}
+label input{
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
 
 
 

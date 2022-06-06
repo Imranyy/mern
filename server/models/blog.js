@@ -14,6 +14,10 @@ const BlogSchema=new Schema({
     content:{
         type:String,
         required:[true,'Blog Content required!!']
+    },
+    blogImage:{
+        type:String,
+        require:[true]
     }
 },{timestamps:true});
 //model

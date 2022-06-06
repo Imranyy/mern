@@ -3,24 +3,41 @@
   <%- include('../partials/head.ejs')%>
 <body>
     <%- include('../partials/nav.ejs')%>
+    <!--modals-->
+    <div id="account" class="modal">
+      <div class="modal-content">
+        <p>am here</p>
+      </div>
+    </div>
+
+   
 <!--content-->
     <div class="container">
         <h5 class="light green-text customfont">All Blogs..</h5><br/>
           <%if(Blogs.length>0){%>
             <%Blogs.forEach(blog=>{%>
-              <a href="/blog/<%=blog._id%>">
-                <div class="card">
-                  <div class="card-title"><%=blog.title%></div>
-                  <div class="card-content"><%=blog.snippet%></div>
+                <div class="card grey-text" style="border-radius: 15px;">
+                  <a href="/blog/<%=blog._id%>" >
+                  <div class="card-image">
+                    <img src="/img/_114896031_screenshot-1372.png" alt="blog image">
+                    <div class="card-title customfont"><%=blog.title%></div>
+                      <form action="/blog/<%=blog._id%>">
+                        <button  class="btn-floating halfway-fab white ">
+                          <i class="material-icons purple lighten-3">smart_toy</i>
+                        </button>
+                      </form>
+                  </div></a>
+                  <div class="card-content" style="display: flex;">
+                    <img src="/img/astronaut-listening-music-with-headphone-peace-hand-cartoon-vector-icon-illustration-science-technology-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3375.png" width="50" alt="avatar" data-target="account" class="avatar circle modal-trigger">
+                    <a href="/blog/<%=blog._id%>"><h6 class="light customfont grey-text" style="margin-left: 15px;"><%=blog.snippet%></h6></a>
+                  </div>
                 </div>
-              </a>
             <%})%>
             <%}else{%>
               <p>No blogs to show</p>
             <%}%>
          <br/>
     </div>
-     
     <%- include('../partials/footer.ejs')%>
   <!--  Scripts-->
   <script src="./js/materialize.min.js"></script>

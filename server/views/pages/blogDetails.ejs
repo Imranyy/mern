@@ -4,15 +4,48 @@
 <body>
     <%- include('../partials/nav.ejs')%>
    
-
+<!--modals-->
+<div class="modal" id="delete">
+  <div class="modal-content">
+    <h6 class="light customfont grey-text center">Do want to delete this blog?</h6>
+    <a href="/blog/<%=blog._id%>" class="btn-small cryan left">Not sure</a>
+    <a data-doc="/blog/<%=blog._id%>" class="btn-small grey right  trash">Yes Delete</a>
+  </div><br/><br/>
+</div>  
 <!--content-->
+<div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot">
+    <a  class="btn-floating white right modal-trigger" data-target="delete" style="margin-right:5%;">
+    <i class="material-icons blue">delete_outline</i>
+    </a>
+    <div class="container texth1">
+      <br><br>
+      <h3 class="header center  white-text  customfont"><%=blog.title%></h3>
+    </div> 
+  </div>
+  <div class="parallax"><img src="/blog/img/_114896031_screenshot-1372.png" alt="image"></div>
+</div>
+
     <div class="container">
-        <h3 class="light grey-text customfont"><%=blog.title%></h3>
-        <p><%=blog.content%></p>
+        <h5 class="light black-text  customfont"><%=blog.content%></h5>
     </div>
-     
-    <%- include('../partials/footer.ejs')%>
+     <br><br><br><br><br>
+    
   <!--  Scripts-->
+  <script>
+    const trash=document.querySelector('.trash');
+    trash.addEventListener('click',(e)=>{
+      const endpoint=`${trash.dataset.doc}`;
+      fetch(endpoint,{
+        method:'DELETE'
+      }).then(()=>{
+        window.location.href='/';
+      }).catch(err=>{
+        console.log(err)
+      })
+    });
+  </script>
+
   <script src="./js/materialize.min.js"></script>
   <script src="./js/init.js" type="module"></script>
   </body>

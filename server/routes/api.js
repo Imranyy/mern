@@ -8,11 +8,11 @@ router.get('/blog',(req,res)=>{
     res.render('../views/pages/index',{title:'Home',Blogs:blog})
    });
 });
-
+ 
 //add data to db
 router.post('/blog',(req,res,next)=>{
    Blog.create(req.body).then((blog)=>{
-     res.redirect('/')
+     res.send(blog)
     }).catch(next);
 });
 
@@ -26,7 +26,7 @@ router.get('/blog/:id',(req,res)=>{
 //delete data from db
 router.delete('/blog/:id',(req,res)=>{
    Blog.findByIdAndRemove({_id:req.params.id}).then((blog)=>{
-       res.send(blog);
+      res.send(blog)
    });
 });
 

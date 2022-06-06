@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost/blog').then((res)=>{
 });
 mongoose.Promise=global.Promise;
 
-//view engine set
+//view engine set  
 app.set('view engine', 'ejs');
 
 //serving static 
