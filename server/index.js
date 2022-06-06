@@ -1,3 +1,4 @@
+
 const express=require('express');
 const router=require('./routes/api');
 const BodyParser=require('body-parser');
@@ -5,10 +6,14 @@ const mongoose=require('mongoose')
 
 const app=express();
 //connect to mongdb
-mongoose.connect('mongodb://localhost/blog').then((res)=>{
+mongoose.connect(process.env.DATABASE,{
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+}).then((res)=>{
     //listening for requests
-    app.listen(process.env.port||3000, ()=>{
-        console.log('listening to port 3000')
+    const Port=process.env.PORT||3000;
+    app.listen(Port, ()=>{
+        console.log(`Server running at ${Port}`) 
     });
 });
 mongoose.Promise=global.Promise;
