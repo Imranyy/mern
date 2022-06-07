@@ -1,4 +1,4 @@
-
+require('dotenv').config();
 const express=require('express');
 const router=require('./routes/api');
 const BodyParser=require('body-parser');
@@ -6,7 +6,7 @@ const mongoose=require('mongoose')
 
 const app=express();
 //connect to mongdb
-mongoose.connect(process.env.DATABASE||'mongodb://localhost/blog',{
+mongoose.connect(process.env.DATABASE,{
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then((res)=>{

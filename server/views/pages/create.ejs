@@ -34,52 +34,37 @@
      <br/><br/><br><br>
     
   <!--  Scripts-->
-  <script>
-
-//firebase
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
-  import {getAuth, GoogleAuthProvider, signInWithPopup,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
-  import{storage} from "https://www.gstatic.com/firebasejs/9.8.1/firebase-storage.js";
-  
-  const firebaseConfig = {
-  apiKey: "AIzaSyCoWoP6foxibGx-7tZQ8-QZUgJttyO32yo",
-  authDomain: "movie-app-62211.firebaseapp.com",
-  projectId: "movie-app-62211",
-  storageBucket: "movie-app-62211.appspot.com",
-  messagingSenderId: "175660892824",
-  appId: "1:175660892824:web:5ad2e9fbdebb64a5fe46ed",
-  measurementId: "G-GPKWP85ZGY"
-};
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth=getAuth(app);
-  const projectStorage=storage(app);
- 
-
-
-   const form=document.querySelector('#formOne');
-   const photo=document.querySelector('#photo');
-   const types=['image/png', 'image/jpeg']
-
-   
-
-   photo.addEventListener('change',(e)=>{
-        let photoName=e.target.files[0];
-          const li=document.querySelector('.error');
-          const valid=document.querySelector('.valid');
-          const error=`
-          <p class="light red-text">Please select an image file(png or jpeg)<p>
-          `
-          const validFile= photoName.name;
-        if(photoName && types.includes(photoName.type)){
-          valid.innerHTML=validFile;
-            li.innerHTML=''
-        }else{
-          li.innerHTML=error;
-        }
-    })
-        
+  <script type="module">
+  import{projectStorage,ref,getDownloadURL,uploadBytesResumable} from '/fireConfig.js'
+//imageUpload
+        const form=document.querySelector('#formOne');
+        const photo=document.querySelector('#photo');
+        const types=['image/png', 'image/jpeg']
+        photo.addEventListener('change',(e)=>{
+              let photoName=e.target.files[0];
+                const li=document.querySelector('.error');
+                const valid=document.querySelector('.valid');
+                const error=`
+                <p class="light red-text">Please select an image file(png or jpeg)<p>
+                `
+                const validFile= photoName.name;
+              if(photoName && types.includes(photoName.type)){
+                valid.innerHTML=validFile;
+                  li.innerHTML=''
+                  //uploading image to storage
+                  const storageRef=ref(projectStorage,photoName.name);
+                  const uploadTask = uploadBytesResumable(storageRef, photoName);
+                  uploadTask.on('state_changed',
+                   async()=>{
+                          const url=await getDownloadURL(storageRef);
+                            console.log(url)
+                        })
+                }else{
+                li.innerHTML=error;
+                valid.innerHTML='';
+              }
+          })
+//formSubmit
        form.addEventListener('submit',(e)=>{
           e.preventDefault();
           const blogTitle=form.title.value;
@@ -110,5 +95,6 @@
   </script>
   <script src="./js/materialize.min.js"></script>
   <script src="./js/init.js" type="module"></script>
+  <script src="/fireConfig.js" type="module"></script>
   </body>
 </html>
