@@ -6,9 +6,7 @@ body{
   font-family:  source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
 }
-.load-more{
-  text-align: center;
-}
+
 .button{
   margin-bottom: 40px;
   font-size: 2em;
