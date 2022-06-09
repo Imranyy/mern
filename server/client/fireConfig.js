@@ -3,6 +3,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
 import {getAuth, GoogleAuthProvider, signInWithPopup,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
 import{getStorage,ref,getDownloadURL,uploadBytesResumable,deleteObject} from "https://www.gstatic.com/firebasejs/9.8.2/firebase-storage.js";
+import { modelNames } from "mongoose";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBX6PYMq3fBiuQ6Zz3wpsmuIypAyZj2krY",
@@ -33,7 +34,9 @@ const firebaseConfig = {
        localStorage.setItem("email",email)
        localStorage.setItem("pic",pic)
      }).then(()=>{
-      window.Location.reload();})
+       
+    window.location.reload();
+    })
  }
 
     //logOut
