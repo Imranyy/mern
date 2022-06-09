@@ -10,6 +10,49 @@
         <h3 class="light grey-text customfont">about page</h3>
     </div>
      
+    <script type="module">
+      import{signout,onAuthStateChanged,auth}from '/fireConfig.js';
+  
+        //logout
+  const logout=document.querySelector('.logout');
+  logout.addEventListener('click',()=>{
+   signout().then(
+          window.location.href='/'
+        );
+  })
+  const logout2=document.querySelector('.logout2');
+      logout2.addEventListener('click',()=>{
+        signout().then(
+          window.location.href='/'
+        );
+      })
+  
+  //ui authentication
+        const loggedinLink=document.querySelectorAll('#logged-in')
+        const loggedoutLink=document.querySelectorAll('#logged-out')
+  
+        const setupUI=(user)=>{
+          if(user){
+            loggedinLink.forEach(item=>item.style.display='block')
+            loggedoutLink.forEach(item=>item.style.display='none')
+          }else{
+            loggedinLink.forEach(item=>item.style.display='none')
+            loggedoutLink.forEach(item=>item.style.display='block')
+          }
+        }
+   auth.onAuthStateChanged((user)=>{
+       //going to controll what users see if logged in or out
+       if(user){
+         //console.log('user is logged in', user)
+         setupUI(user)
+       } else {
+         //console.log('user is logged outer',user)
+         setupUI()
+       }
+     })
+   
+        
+    </script>
    
   <!--  Scripts-->
   <script src="./js/materialize.min.js"></script>

@@ -38,8 +38,8 @@ const firebaseConfig = {
 
     //logOut
    const signout=()=>{
-      signOut(auth).then(()=>{
-          window.location.href='/'
+      signOut(auth).then(()=>{ 
+         window.location.href='/'
       }).catch(err=>{
         console.log(err.message)
       }) 

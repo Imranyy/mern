@@ -20,7 +20,7 @@ const BlogSchema=new Schema({
         require:[true]
     }
 },{timestamps:true});
-//model
+//model 
 const Blog=mongoose.model('blog',BlogSchema);
  
 module.exports=Blog;

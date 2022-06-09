@@ -6,7 +6,7 @@ const mongoose=require('mongoose')
 
 const app=express();
 //connect to mongdb
-mongoose.connect(process.env.DATABASE,{
+mongoose.connect(process.env.DATABASE,{ 
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then((res)=>{
@@ -15,14 +15,14 @@ mongoose.connect(process.env.DATABASE,{
     app.listen(Port, ()=>{
         console.log(`Server running at ${Port}`) 
     });
-});
-mongoose.Promise=global.Promise;
+});  
+mongoose.Promise=global.Promise;  
 
 //view engine set  
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); 
 
 //serving static 
-app.use(express.static('client'));
+app.use(express.static('client')); 
 
 //using bodyparser 1st middleware
 app.use(BodyParser.json());
@@ -37,13 +37,22 @@ app.use((err,req,res,next)=>{
 //routes
 app.get('/',(req,res)=>{
     res.redirect('/blog')
+}); 
+app.get('/blog3',(req,res)=>{
+    res.render('pages/blog3',{title:'Blog Details'})
+});
+app.get('/blog4',(req,res)=>{
+    res.render('pages/blog4',{title:'Blog Details'})
+});
+app.get('/blog5',(req,res)=>{
+    res.render('pages/blog5',{title:'Blog Details'})
 });
 app.get('/create',(req,res)=>{
     res.render('pages/create',{title:'Add New Blog'})
 });
 app.get('/about',(req,res)=>{
     res.render('pages/about',{title:'About Us'})
-});
+}); 
 app.use((req,res)=>{
     res.status(404).render('pages/404',{title:'Not Found'})
 });

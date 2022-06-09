@@ -6,21 +6,28 @@
     <!--modals-->
     <div id="account" class="modal">
       <div class="modal-content">
-        <p>am here</p>
+        <p class="account-details"></p>
       </div>
     </div>
-
+    
+    <div class="modal" id="signup" style="border-radius: 5px;">
+      <div class="modal-content center">
+        <p >Please, Sign up to Load More Content</p>
+        <a class="btn-small purple" id="bn-signup">SignUp with Google<i class="material-icons right">anchor</i></a>
+      </div>
+    </div>
    
 <!--content-->
     <div class="container">
-        <h5 class="light green-text customfont">All Blogs..</h5><br/>
+        <h5 class="light purple-text customfont">All Blogs..</h5><br/>
+         <div id="logged-in" style="display: none;">
           <%if(Blogs.length>0){%>
             <%Blogs.forEach(blog=>{%>
                 <div class="card grey-text" style="border-radius: 15px;">
                   <a href="/blog/<%=blog._id%>" >
                   <div class="card-image">
-                    <img src="/img/_114896031_screenshot-1372.png" alt="blog image">
-                    <div class="card-title customfont"><%=blog.title%></div>
+                    <img src="<%=blog.blogImage%>" alt="blog image">
+                    <div class="card-title customfont purple-text"><%=blog.title%></div>
                       <form action="/blog/<%=blog._id%>">
                         <button  class="btn-floating halfway-fab white ">
                           <i class="material-icons purple lighten-3">smart_toy</i>
@@ -36,11 +43,169 @@
             <%}else{%>
               <p>No blogs to show</p>
             <%}%>
+         </div>
+         <!--loged out user data-->
+
+          <div >
+            <div class="card grey-text" style="border-radius: 15px;">
+              <a href="/blog3" >
+              <div class="card-image">
+                <img src="/img/Screenshot (44).png" alt="blog image">
+                <div class="card-title customfont purple-text">Charitable ❤🧡💛</div>
+                  <form action="/blog3">
+                    <button  class="btn-floating halfway-fab white ">
+                      <i class="material-icons purple lighten-3">smart_toy</i>
+                    </button>
+                  </form>
+              </div></a>
+              <div class="card-content" style="display: flex;">
+                <img src="/img/astronaut-listening-music-with-headphone-peace-hand-cartoon-vector-icon-illustration-science-technology-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3375.png" width="50" alt="avatar" data-target="account" class="avatar circle modal-trigger">
+                <a href="/blog3"><h6 class="light customfont grey-text" style="margin-left: 15px;">A site for charity...</h6></a>
+              </div>
+            </div>
+          </div>
+
+          <div >
+            <div class="card grey-text" style="border-radius: 15px;">
+              <a href="/blog4" >
+              <div class="card-image">
+                <img src="/img/Screenshot (104).png" alt="blog image">
+                <div class="card-title customfont purple-text">Scrape🛰🛸</div>
+                  <form action="/blog4">
+                    <button  class="btn-floating halfway-fab white ">
+                      <i class="material-icons purple lighten-3">smart_toy</i>
+                    </button>
+                  </form>
+              </div></a>
+              <div class="card-content" style="display: flex;">
+                <img src="/img/astronaut-listening-music-with-headphone-peace-hand-cartoon-vector-icon-illustration-science-technology-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3375.png" width="50" alt="avatar" data-target="account" class="avatar circle modal-trigger">
+                <a href="/blog4"><h6 class="light customfont grey-text" style="margin-left: 15px;">A site that can open your social media sites...</h6></a>
+              </div>
+            </div>
+          </div>
+
+          <div >
+            <div class="card grey-text" style="border-radius: 15px;">
+              <a href="/blog5" >
+              <div class="card-image">
+                <img src="/img/Screenshot (103).png" alt="blog image">
+                <div class="card-title customfont purple-text">Movies site🪐</div>
+                  <form action="/blog5">
+                    <button  class="btn-floating halfway-fab white ">
+                      <i class="material-icons purple lighten-3">smart_toy</i>
+                    </button>
+                  </form>
+              </div></a>
+              <div class="card-content" style="display: flex;">
+                <img src="/img/astronaut-listening-music-with-headphone-peace-hand-cartoon-vector-icon-illustration-science-technology-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3375.png" width="50" alt="avatar" data-target="account" class="avatar circle modal-trigger">
+                <a href="/blog5"><h6 class="light customfont grey-text" style="margin-left: 15px;">A website that display movie trailers  for free....</h6></a>
+              </div>
+            </div>
+          </div>
+
+            <div class="load-more" id="logged-out" style="display: none;" >
+              <button class="btn purple button modal-trigger" data-target="signup">Load More</button>
+            </div>
+
+            <!--div id="logged-in" style="display: none;">
+              <div class="card grey-text" id="authen" style="border-radius: 15px;">
+                
+              </div>
+            </div-->
          <br/>
     </div>
     <%- include('../partials/footer.ejs')%>
   <!--  Scripts-->
+  <script type="module">
+    import{signInWithGoogle,signout,onAuthStateChanged,auth}from '/fireConfig.js';
+
+      //sign in
+      const signup=document.querySelector('#bn-signup');
+      signup.addEventListener('click',()=>{
+        signInWithGoogle();
+      });
+      //logout
+      const logout=document.querySelector('.logout');
+      logout.addEventListener('click',()=>{
+        signout();
+      })
+      
+  const logout2=document.querySelector('.logout2');
+      logout2.addEventListener('click',()=>{
+        signout();
+      })
+
+//ui authentication
+      const loggedinLink=document.querySelectorAll('#logged-in')
+      const loggedoutLink=document.querySelectorAll('#logged-out')
+
+      const setupUI=(user)=>{
+        if(user){
+          /*const authen=document.querySelector('#authen');
+          fetch('/blogs',{
+            method:"GET"
+          }).then(response=>response.json())
+          .then((data)=>{
+           data.forEach(blog=>{
+            let html='';
+           const li =`
+          <a href="/blog/${blog._id}" >
+                  <div class="card-image">
+                    <img src="${blog.blogImage}" alt="blog image">
+                    <div class="card-title customfont">${blog.title}</div>
+                      <form action="/blog/${blog._id}">
+                        <button  class="btn-floating halfway-fab white ">
+                          <i class="material-icons purple lighten-3">smart_toy</i>
+                        </button>
+                      </form>
+                  </div></a>
+                  <div class="card-content" style="display: flex;">
+                    <img src="/img/astronaut-listening-music-with-headphone-peace-hand-cartoon-vector-icon-illustration-science-technology-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3375.png" width="50" alt="avatar" data-target="account" class="avatar circle modal-trigger">
+                    <a href="/blog/${blog._id}"><h6 class="light customfont grey-text" style="margin-left: 15px;">${blog.snippet}</h6></a>
+                  </div>
+          `
+        authen.innerHTML =  html += li;
+           })
+          })*/
+
+          loggedinLink.forEach(item=>item.style.display='block')
+          loggedoutLink.forEach(item=>item.style.display='none')
+        }else{
+          loggedinLink.forEach(item=>item.style.display='none')
+          loggedoutLink.forEach(item=>item.style.display='block')
+        }
+      }
+ auth.onAuthStateChanged((user)=>{
+     //going to controll what users see if logged in or out
+     if(user){
+       //console.log('user is logged in', user)
+       //acount details
+        const account =document.querySelector('.account-details');
+        let html='';
+          const li =`
+            <h4>
+            <p>${localStorage.getItem('name')}</p>
+            <p>${localStorage.getItem('email')}</p>
+            <img src='${localStorage.getItem('pic')}' />
+            </h4>
+          `
+         
+        account.innerHTML =  html += li;
+
+        setupUI(user)
+     } else {
+       //console.log('user is logged outer',user)
+       const account =document.querySelector('.account-details');
+        account.innerHTML = [];
+       setupUI()
+     }
+   })
+ 
+      
+  </script>
+ 
   <script src="./js/materialize.min.js"></script>
   <script src="./js/init.js" type="module"></script>
+  <script src="/fireConfig.js" type="module"></script>
   </body>
 </html>

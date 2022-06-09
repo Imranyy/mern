@@ -1,18 +1,20 @@
 
-  <nav class="green lighten-5" role="navigation">
+  <nav class="purple lighten-5" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="/" class="brand-logo green-text text-darken-5 customfont left"><i class="material-icons" style="font-size: larger;">beach_access</i>Trendy</a>
+      <a id="logo-container" href="/" class="brand-logo purple-text text-darken-5 customfont left"><i class="material-icons" style="font-size: larger;">beach_access</i>Trendy</a>
       <ul class="right hide-on-med-and-down">
-        <li><a class="green-text" href="/">Home</a></li>
-        <li><a class="green-text" href="/create">Add New Blog</a></li>
-        <li><a class="green-text" href="/about">About</a></li>
+        <li><a class="purple-text" href="/">Home</a></li>
+        <li><a class="purple-text" id="logged-in" style="display: none;" href="/create">Add New Blog</a></li>
+        <li><a class="purple-text" id="logged-out" style="display: none;" href="/about">About</a></li>
+        <li><a class="purple-text logout" id="logged-in" style="display: none;">SignOut</a></li>
       </ul>
 
-      <ul id="nav-mobile" class="sidenav" style="background: #f2faf2;"> 
-        <li><a class="green-text" href="/">Home</a></li>
-        <li><a class="green-text" href="/create">Add New Blog</a></li>
-        <li><a class="green-text" href="/about">About</a></li>
+      <ul id="nav-mobile" class="sidenav" style="background: #faf2f9;"> 
+        <li><a class="purple-text"  href="/">Home</a></li>
+        <li><a class="purple-text" id="logged-in" style="display: none;" href="/create">Add New Blog</a></li>
+        <li><a class="purple-text" id="logged-out" style="display: none;" href="/about">About</a></li>
+        <li><a class="purple-text logout2" id="logged-in" style="display: none;">SignOut</a></li>
       </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger right"><i class="material-icons green-text">menu</i></a>
+      <a data-target="nav-mobile" class="sidenav-trigger right"><i class="material-icons purple-text">menu</i></a>
     </div>
   </nav>

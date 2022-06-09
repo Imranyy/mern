@@ -2,8 +2,8 @@
 <html lang="en">
   <%- include('../partials/head.ejs')%>
 <body>
-    <%- include('../partials/nav.ejs')%>
-   
+  <%- include('../partials/nav.ejs')%>
+
 <!--modals-->
 <div class="modal" id="delete">
   <div class="modal-content">
@@ -15,15 +15,15 @@
 <!--content-->
 <div id="index-banner" class="parallax-container">
   <div class="section no-pad-bot">
-    <a  class="btn-floating white right modal-trigger" data-target="delete" style="margin-right:5%;">
+    <a  class="btn-floating white right modal-trigger" id="logged-in" data-target="delete" style="margin-right:5%; display: none;">
     <i class="material-icons blue">delete_outline</i>
     </a>
     <div class="container texth1">
       <br><br>
-      <h3 class="header center  white-text  customfont"><%=blog.title%></h3>
+      <h4 class="header center  white-text  customfont"><%=blog.title%></h4>
     </div> 
   </div>
-  <div class="parallax"><img src="/blog/img/_114896031_screenshot-1372.png" alt="image"></div>
+  <div class="parallax"><img src="<%=blog.blogImage%>" alt="image" width="100%" height="20%" ></div>
 </div>
 
     <div class="container">
@@ -32,9 +32,19 @@
      <br><br><br><br><br>
     
   <!--  Scripts-->
-  <script>
+  <script type="module">
+    import{projectStorage,ref,deleteObject,signout,onAuthStateChanged,auth}from '/fireConfig.js';
+  
     const trash=document.querySelector('.trash');
     trash.addEventListener('click',(e)=>{
+      //delete uploaded image on storage
+      const storageRef=ref(projectStorage,'blog.blogImage');
+      deleteObject(storageRef).then(() => {
+        console.log('deleted')
+      }).catch((error) => {
+       console.log(error)
+      });
+      //delete data on backend
       const endpoint=`${trash.dataset.doc}`;
       fetch(endpoint,{
         method:'DELETE'
@@ -44,9 +54,50 @@
         console.log(err)
       })
     });
+
+     
+      //logout
+      const logout=document.querySelector('.logout');
+      logout.addEventListener('click',()=>{
+        signout().then(
+          window.location.href='/'
+        );
+      })
+      const logout2=document.querySelector('.logout2');
+      logout2.addEventListener('click',()=>{
+        signout().then(
+          window.location.href='/'
+        );
+      })
+
+//ui authentication
+      const loggedinLink=document.querySelectorAll('#logged-in')
+      const loggedoutLink=document.querySelectorAll('#logged-out')
+
+      const setupUI=(user)=>{
+        if(user){
+          loggedinLink.forEach(item=>item.style.display='block')
+          loggedoutLink.forEach(item=>item.style.display='none')
+        }else{
+          loggedinLink.forEach(item=>item.style.display='none')
+          loggedoutLink.forEach(item=>item.style.display='block')
+        }
+      }
+ auth.onAuthStateChanged((user)=>{
+     //going to controll what users see if logged in or out
+     if(user){
+       //console.log('user is logged in', user)
+        setupUI(user)
+     } else {
+       //console.log('user is logged outer',user)
+       setupUI()
+     }
+   })
+ 
   </script>
 
   <script src="./js/materialize.min.js"></script>
   <script src="./js/init.js" type="module"></script>
+  <script src="/fireConfig.js" type="module"></script>
   </body>
 </html>
