@@ -13,6 +13,8 @@
         <input type="text" id="title" name="title" required>
         <label for="snippet">Blog Subtitle:</label>
         <input type="text"  id="snippet" name="snippet" required>
+        <label for="body">Blog body:</label>
+        <textarea type="text" style="margin-top: 20px; height: 110px;" id="body" name="content" required></textarea>
         <div id="form" >
           <label>
             <input type="file" id="photo" name="photo">
@@ -27,10 +29,7 @@
             <div class="error"></div>
           </div>
         </div>
-        <label for="body">Blog body:</label>
-        <textarea type="text" style="margin-top: 20px; height: 110px;" id="body" name="content" required></textarea>
-        
-        <button class="btn small purple" style="margin-top: 30px;">Submit</button>
+
       </form>
     </div>
      <br/><br/><br><br>
@@ -101,8 +100,7 @@ const logout2=document.querySelector('.logout2');
                   uploadTask.on('state_changed',
                    async()=>{
                            const url=await getDownloadURL(storageRef).then((url)=>{
-                            form.addEventListener('submit',(e)=>{
-                              e.preventDefault()
+                           
                             const blogTitle=form.title.value;
                             const blogSnippet=form.snippet.value;
                             const blogBody=form.content.value;
@@ -126,13 +124,14 @@ const logout2=document.querySelector('.logout2');
                             //.catch(err=>console.log(err))
                             .then(()=>{
                               form.reset();
+                              alert('Wait for a moment!!')
                               window.location.href='/'
                             })
                            })
 
                            })
                            
-                        })
+                       
                 }else{
                 li.innerHTML=error;
                 valid.innerHTML='';

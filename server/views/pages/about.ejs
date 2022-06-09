@@ -3,16 +3,34 @@
   <%- include('../partials/head.ejs')%>
 <body>
     <%- include('../partials/nav.ejs')%>
-   
-
+   <!--modal-->
+   <div class="modal" id="signup" style="border-radius: 5px;">
+    <div class="modal-content center">
+      <p >Please, Sign up to Load More Content</p>
+      <a class="btn-small purple" id="bn-signup">SignUp with Google<i class="material-icons right">anchor</i></a>
+    </div>
+  </div>
 <!--content-->
     <div class="container">
         <h3 class="light grey-text customfont">about page</h3>
+        <h5 class="light grey-text customfont">Discover amazing and fantastic blogs on the site. This Blogs are written by
+          different people .. You have to signin to enjoy other services like adding a blog , loading more blogs and much more.
+        <br> <br>
+      Have fun 😍😍
+      </h5><br><br>
+      <div id="logged-out" style="display: none;" >
+        <button class="btn-small purple button modal-trigger customfont" data-target="signup" style="font-size: 15px;">sign in</button>
+      </div>
     </div>
      
     <script type="module">
-      import{signout,onAuthStateChanged,auth}from '/fireConfig.js';
-  
+      import{signInWithGoogle,signout,onAuthStateChanged,auth}from '/fireConfig.js';
+  //sign in
+  const signup=document.querySelector('#bn-signup');
+      signup.addEventListener('click',()=>{
+        const modal=document.querySelector('.modal')
+        signInWithGoogle()
+      });
         //logout
   const logout=document.querySelector('.logout');
   logout.addEventListener('click',()=>{

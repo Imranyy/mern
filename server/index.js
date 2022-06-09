@@ -27,7 +27,7 @@ app.use(express.static('client'));
 //using bodyparser 1st middleware
 app.use(BodyParser.json());
 app.use(express.urlencoded({extended:true}));
-//using router 2nd middleware
+//using router 2nd middleware 
 app.use(router);
 //error handling 
 app.use((err,req,res,next)=>{
