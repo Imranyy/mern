@@ -33,7 +33,7 @@ const firebaseConfig = {
        localStorage.setItem("email",email)
        localStorage.setItem("pic",pic)
      }).then(()=>{
-      window.Location.reload();})
+      window.location.reload();})
  }
 
     //logOut
