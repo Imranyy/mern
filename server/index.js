@@ -53,7 +53,7 @@ app.get('/create',(req,res)=>{
 app.get('/about',(req,res)=>{
     res.render('pages/about',{title:'About Us'})
 }); 
-app.use((req,res)=>{
+app.use((req,res)=>{ 
     res.status(404).render('pages/404',{title:'Not Found'})
 });
 
