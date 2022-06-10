@@ -10,12 +10,10 @@
       </div>
     </div>
     
-    <div class="modal" id="signup" style="border-radius: 5px;">
-      <div class="modal-content center">
-        <p >Please, Sign up to Load More Content</p>
-        <a class="btn-small purple" id="bn-signup">SignUp with Google<i class="material-icons right">anchor</i></a>
-      </div>
-    </div>
+
+     
+        <a class="btn-small purple" >SignUp with Google<i class="material-icons right">anchor</i></a>
+      
    
 <!--content-->
     <div class="container">
@@ -127,7 +125,7 @@
     import{signInWithGoogle,signout,onAuthStateChanged,auth}from '/fireConfig.js';
 
       //sign in
-      const signup=document.querySelector('#bn-signup');
+      const signup=document.querySelectorAll('.bn-signup');
       signup.addEventListener('click',()=>{
         signInWithGoogle();
       });
@@ -136,6 +134,7 @@
       logout.addEventListener('click',()=>{
         signout();
       })
+
 
 //ui authentication
       const loggedinLink=document.querySelectorAll('#logged-in')
