@@ -5,7 +5,7 @@ const Blog=require('../models/blog');
 //get data from db
 router.get('/blog',(req,res)=>{
    Blog.find({}).sort({createdAt:-1}).then((blog)=>{
-    res.render('../views/pages/index',{title:'Home',Blogs:blog})
+    res.render('../views/pages/index',{title:'Blogs',Blogs:blog})
    });
 });
 //get data for autheniticated users 

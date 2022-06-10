@@ -9,16 +9,11 @@
         <p class="account-details"></p>
       </div>
     </div>
-    
 
-     
-        <a class="btn-small purple" >SignUp with Google<i class="material-icons right">anchor</i></a>
       
    
 <!--content-->
     <div class="container">
-        <div class="row">
-          <div class="col s12 m6 l4">
             <h5 class="light purple-text customfont">All Blogs..</h5><br/>
          <div id="logged-in" style="display: none;">
           <%if(Blogs.length>0){%>
@@ -44,12 +39,9 @@
             <%}else{%>
               <p>No blogs to show</p>
             <%}%>
-          </div>
-        </div>
          </div>
          <!--loged out user data-->
-         <div class="row">
-          <div class="col s12 m6 l4">
+         <div>
             <div class="card grey-text" style="border-radius: 15px;">
               <a href="/blog3" >
               <div class="card-image">
@@ -66,10 +58,8 @@
                 <img src="/img/astronaut-listening-music-with-headphone-peace-hand-cartoon-vector-icon-illustration-science-technology-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3375.png" width="50" alt="avatar" data-target="account" class="avatar circle modal-trigger">
                 <a href="/blog3"><h6 class="light customfont grey-text" style="margin-left: 15px;">A site for charity...</h6></a>
               </div>
-            </div>
           </div>
 
-          <div class="col s12 m6 l4">
             <div class="card grey-text" style="border-radius: 15px;">
               <a href="/blog4" >
               <div class="card-image">
@@ -87,9 +77,8 @@
                 <a href="/blog4"><h6 class="light customfont grey-text" style="margin-left: 15px;">A site that can open your social media sites...</h6></a>
               </div>
             </div>
-          </div>
 
-          <div class="col s12 m6 l4" >
+          
             <div class="card grey-text" style="border-radius: 15px;">
               <a href="/blog5" >
               <div class="card-image">
@@ -107,7 +96,6 @@
                 <a href="/blog5"><h6 class="light customfont grey-text" style="margin-left: 15px;">A website that display movie trailers  for free....</h6></a>
               </div>
             </div>
-          </div>
 
          </div>
           
@@ -125,12 +113,12 @@
     import{signInWithGoogle,signout,onAuthStateChanged,auth}from '/fireConfig.js';
 
       //sign in
-      const signup=document.querySelectorAll('.bn-signup');
+      const signup=document.querySelector('.bn-signup');
       signup.addEventListener('click',()=>{
         signInWithGoogle();
       });
       //logout
-      const logout=document.querySelectorAll('.logout');
+      const logout=document.querySelector('.logout');
       logout.addEventListener('click',()=>{
         signout();
       })
