@@ -29,7 +29,7 @@
   <script type="module">
     import{signout,onAuthStateChanged,auth}from '/fireConfig.js';
 //logout
-const logout=document.querySelectorAll('.logout');
+const logout=document.querySelector('.logout');
 logout.addEventListener('click',()=>{
  signout()
 })
