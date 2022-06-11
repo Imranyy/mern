@@ -3,13 +3,7 @@
   <%- include('../partials/head.ejs')%>
 <body>
     <%- include('../partials/nav.ejs')%>
-   <!--modal-->
-   <div class="modal" id="signup" style="border-radius: 5px;">
-    <div class="modal-content center">
-      <p >Please, Sign up to Load More Content</p>
-      <a class="btn-small purple" id="bn-signup">SignUp with Google<i class="material-icons right">anchor</i></a>
-    </div>
-  </div>
+   
 <!--content-->
     <div class="container">
         <h3 class="light grey-text customfont">about page</h3>
@@ -18,34 +12,26 @@
         <br> <br>
       Have fun 😍😍
       </h5><br><br>
-      <div id="logged-out" style="display: none;" >
-        <button class="btn-small purple button modal-trigger customfont" data-target="signup" style="font-size: 15px;">sign in</button>
-      </div>
+  
     </div>
      
     <script type="module">
-      import{signInWithGoogle,signout,onAuthStateChanged,auth}from '/fireConfig.js';
+      import{signInWithGoogle,onAuthStateChanged,auth}from '/fireConfig.js';
   //sign in
-  const signup=document.querySelector('#bn-signup');
+  const signup=document.querySelector('.bn-signup');
       signup.addEventListener('click',()=>{
-        const modal=document.querySelector('.modal')
-        signInWithGoogle()
+        signInWithGoogle().then(()=>{
+          window.location.href='/'
+        }
+        )
       });
-        //logout
-  const logout=document.querySelectorAll('.logout');
-  logout.addEventListener('click',()=>{
-   signout().then(
+      const signup2=document.querySelector('.bn-signup2');
+      signup2.addEventListener('click',()=>{
+        signInWithGoogle().then(()=>{
           window.location.href='/'
-        );
-  })
-  
-  const logout2=document.querySelector('.logout2');
-      logout2.addEventListener('click',()=>{
-        signout().then(
-          window.location.href='/'
-        );
-      })
-  
+        }
+        )
+      });
   //ui authentication
         const loggedinLink=document.querySelectorAll('#logged-in')
         const loggedoutLink=document.querySelectorAll('#logged-out')

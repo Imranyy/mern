@@ -41,7 +41,7 @@ app.get('/',(req,res)=>{
 app.get('/blog3',(req,res)=>{
     res.render('pages/blog3',{title:'Blog Details'})
 });
-app.get('/blog4',(req,res)=>{ 
+app.get('/blog4',(req,res)=>{
     res.render('pages/blog4',{title:'Blog Details'})
 });
 app.get('/blog5',(req,res)=>{

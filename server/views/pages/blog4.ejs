@@ -27,30 +27,15 @@
      <br><br><br><br><br>
     
      <script type="module">
-    import{signout,onAuthStateChanged,auth,signInWithGoogle}from '/fireConfig.js';
-
-    //sign in
-    const signup=document.querySelector('.bn-signup');
-      signup.addEventListener('click',()=>{
-        signInWithGoogle();
-      });
-      const signup2=document.querySelector('.bn-signup2');
-      signup.addEventListener('click',()=>{
-        signInWithGoogle();
-      });
-
+    import{signout,onAuthStateChanged,auth}from '/fireConfig.js';
 //logout
 const logout=document.querySelectorAll('.logout');
 logout.addEventListener('click',()=>{
- signout().then(
-          window.location.href='/'
-        );
+ signout()
 })
 const logout2=document.querySelector('.logout2');
-      logout.addEventListener('click',()=>{
-        signout().then(
-          window.location.href='/'
-        );
+      logout2.addEventListener('click',()=>{
+        signout();
       })
 //ui authentication
 const loggedinLink=document.querySelectorAll('#logged-in')
