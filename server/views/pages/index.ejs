@@ -180,11 +180,11 @@
         const account =document.querySelector('.account-details');
         let html='';
           const li =`
-            <h4>
-            <p>${localStorage.getItem('name')}</p>
-            <p>${localStorage.getItem('email')}</p>
-            <img src='${localStorage.getItem('pic')}' />
-            </h4>
+          <div class='center'>
+         <img src='${localStorage.getItem('pic')}' class="avatar circle center"/>
+         <p class="light customfont">${localStorage.getItem('name')}</p>
+         <p class="light customfont">${localStorage.getItem('email')}</p>
+         </div>
           `
          
         account.innerHTML =  html += li;
