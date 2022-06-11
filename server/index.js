@@ -56,4 +56,4 @@ app.get('/about',(req,res)=>{
 app.use((req,res)=>{ 
     res.status(404).render('pages/404',{title:'Not Found'})
 });
-
+ 

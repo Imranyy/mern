@@ -31,6 +31,7 @@ label input{
 
 
 
+
 /**
  * Use this file to override Materialize files so you can update
  * the core Materialize files in the future
@@ -59,6 +60,7 @@ label input{
    .parallax-container .section {
      width: 100%;
    }
+  
  
  @media only screen and (max-width : 992px) {
    .parallax-container .section {

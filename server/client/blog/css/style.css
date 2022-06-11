@@ -15,7 +15,9 @@ body{
   margin-top: 4%;
  padding-top: 3%;
 }
-
+.tex{
+  font-size: 45%;
+}
 /**
  * Use this file to override Materialize files so you can update
  * the core Materialize files in the future
@@ -45,6 +47,17 @@ p {
   .parallax-container .section {
     width: 100%;
   }
+  @media only screen and (max-width : 400px) {
+    .tex{
+      font-size: 40%;
+    }
+    }
+    @media only screen and (max-width : 310px) {
+      .tex{
+        
+        font-size: 35%;
+      }
+      }
 
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
