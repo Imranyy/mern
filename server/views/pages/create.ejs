@@ -39,7 +39,7 @@
   import{signout,onAuthStateChanged,auth,projectStorage,ref,getDownloadURL,uploadBytesResumable} from '/fireConfig.js'
 
      //logout
-const logout=document.querySelector('.logout');
+const logout=document.querySelectorAll('.logout');
 logout.addEventListener('click',()=>{
  signout().then(
           window.location.href='/'
