@@ -15,10 +15,10 @@
 <!--content-->
     <div class="container">
             <h5 class="light purple-text customfont">All Blogs..</h5><br/>
-         <div id="logged-in" style="display: none;">
+         <div>
           <%if(Blogs.length>0){%>
             <%Blogs.forEach(blog=>{%>
-                <div class="card grey-text" style="border-radius: 15px;">
+                <div class="card grey-text">
                   <a href="/blog/<%=blog._id%>" >
                   <div class="card-image">
                     <img src="<%=blog.blogImage%>" alt="blog image">
@@ -42,7 +42,7 @@
          </div>
          <!--loged out user data-->
          <div>
-            <div class="card grey-text" style="border-radius: 15px;">
+            <div class="card grey-text">
               <a href="/blog3" >
               <div class="card-image">
                 <img src="/img/Screenshot (44).png" alt="blog image">
@@ -60,7 +60,7 @@
               </div>
           </div>
 
-            <div class="card grey-text" style="border-radius: 15px;">
+            <div class="card grey-text">
               <a href="/blog4" >
               <div class="card-image">
                 <img src="/img/Screenshot (104).png" alt="blog image">
@@ -79,7 +79,7 @@
             </div>
 
           
-            <div class="card grey-text" style="border-radius: 15px;">
+            <div class="card grey-text">
               <a href="/blog5" >
               <div class="card-image">
                 <img src="/img/Screenshot (103).png" alt="blog image">
