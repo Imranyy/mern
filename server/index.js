@@ -16,7 +16,7 @@ mongoose.connect(process.env.DATABASE,{
         console.log(`Server running at ${Port}`) 
     });
 });  
-mongoose.Promise=global.Promise;  
+mongoose.Promise=global.Promise;
 
 //view engine set  
 app.set('view engine', 'ejs'); 
@@ -26,7 +26,6 @@ app.use(express.static('client'));
 
 //using bodyparser 1st middleware
 app.use(BodyParser.json());
-app.use(express.urlencoded({extended:true}));
 //using router 2nd middleware 
 app.use(router);
 //error handling 
@@ -56,4 +55,6 @@ app.get('/about',(req,res)=>{
 app.use((req,res)=>{ 
     res.status(404).render('pages/404',{title:'Not Found'})
 });
+
+
  
