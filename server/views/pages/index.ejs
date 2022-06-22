@@ -13,9 +13,9 @@
       
    
 <!--content-->
-    <div class="container" style="z-index: 0;">
+    <div class="container">
             <h5 class="light purple-text customfont">All Blogs..</h5><br/>
-         <div>
+         <div id="logged-in" style="display: none;">
           <%if(Blogs.length>0){%>
             <%Blogs.forEach(blog=>{%>
                 <div class="card grey-text" style="border-radius: 15px;">
@@ -41,7 +41,7 @@
             <%}%>
          </div>
          <!--loged out user data-->
-         <div class="logged-out" style="display: none;">
+         <div>
             <div class="card grey-text" style="border-radius: 15px;">
               <a href="/blog3" >
               <div class="card-image">
@@ -60,7 +60,6 @@
               </div>
           </div>
 
-          <div class="logged-out" style="display: none;">
             <div class="card grey-text" style="border-radius: 15px;">
               <a href="/blog4" >
               <div class="card-image">
@@ -78,10 +77,9 @@
                 <a href="/blog4"><h6 class="light customfont grey-text" style="margin-left: 15px;">A site that can open your social media sites...</h6></a>
               </div>
             </div>
-          </div>
+
           
-          <div class="logged-out" style="display: none;">
-            <div class="card grey-text logged-out" style="display: none; border-radius: 15px;">
+            <div class="card grey-text" style="border-radius: 15px;">
               <a href="/blog5" >
               <div class="card-image">
                 <img src="/img/Screenshot (103).png" alt="blog image">
@@ -98,46 +96,22 @@
                 <a href="/blog5"><h6 class="light customfont grey-text" style="margin-left: 15px;">A website that display movie trailers  for free....</h6></a>
               </div>
             </div>
-          </div>
-       </div>
-          
-      </div> 
-         
-           
-        
-          <div class="wrapper logged-out">
-            <img src="/img/login-shield.png" alt="">
-            <div class="cont">
-              <header>Sign in Prompt</header>
-              <p>Please Sign in to more content</p>
-              <div class="buttons">
-                <button class="item">I understand</button>
-                <a class="item">Sign Up now</a>
-              </div>
-            </div>
-          </div>
-        <br/>
-        
 
-    
+         </div>
+          
+           
+            <!--div id="logged-in" style="display: none;">
+              <div class="card grey-text" id="authen" style="border-radius: 15px;">
+                
+              </div>
+            </div-->
+         <br/>
+    </div>
     <%- include('../partials/footer.ejs')%>
   <!--  Scripts-->
   <script type="module">
     import{signInWithGoogle,signout,onAuthStateChanged,auth}from '/fireConfig.js';
-//cookie
-  const cookieBox=document.querySelector('.wrapper')
-  const acceptBtn=document.querySelector('.buttons button')
-  acceptBtn.onclick=()=>{
-    document.cookie="CookieBy=Trendy; max-age="+60*60*24*30;
-    if(document.cookie){
-      cookieBox.classList.add('hide')
-    }else{
-      alert("cookie can't be set!")
-    }
-  }  
-  let checkCookie=document.cookie.indexOf('CookieBy=Trendy');
-  checkCookie !=-1 ? cookieBox.classList.add('hide'): cookieBox.classList.remove('hide')
-  
+
       //sign in
       const signup=document.querySelector('.bn-signup');
       signup.addEventListener('click',()=>{
