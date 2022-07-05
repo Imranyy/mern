@@ -15,7 +15,7 @@
 <!--content-->
     <div class="container">
             <h5 class="light purple-text customfont">All Blogs..</h5><br/>
-         <div id="logged-in" style="display: none;">
+         <div>
           <%if(Blogs.length>0){%>
             <%Blogs.forEach(blog=>{%>
                 <div class="card grey-text" style="border-radius: 15px;">
@@ -100,11 +100,7 @@
          </div>
           
            
-            <!--div id="logged-in" style="display: none;">
-              <div class="card grey-text" id="authen" style="border-radius: 15px;">
-                
-              </div>
-            </div-->
+      
          <br/>
     </div>
     <%- include('../partials/footer.ejs')%>
