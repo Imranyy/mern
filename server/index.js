@@ -6,7 +6,7 @@ const mongoose=require('mongoose')
 
 const app=express();
 //connect to mongdb
-mongoose.connect(process.env.DATABASE,{ 
+mongoose.connect(process.env.LOCALURI,{ 
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then((res)=>{
@@ -52,7 +52,7 @@ app.get('/create',(req,res)=>{
 });
 app.get('/about',(req,res)=>{
     res.render('pages/about',{title:'About Us'})
-}); 
+});
 app.use((req,res)=>{ 
     res.status(404).render('pages/404',{title:'Not Found'})
 });
