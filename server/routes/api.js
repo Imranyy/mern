@@ -8,12 +8,6 @@ router.get('/blog',(req,res)=>{
     res.render('../views/pages/index',{title:'Blogs',Blogs:blog})
    });
 });
-//get data for autheniticated users 
-/*router.get('/blogs',(req,res)=>{  
-   Blog.find({}).sort({createdAt:-1}).limit(5).then((blog)=>{
-    res.send(blog)
-   });
-});*/
 
 //add data to db
 router.post('/blog',(req,res,next)=>{

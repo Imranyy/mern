@@ -38,6 +38,12 @@ app.use((err,req,res,next)=>{
 app.get('/',(req,res)=>{
     res.redirect('/blog')
 }); 
+app.get('/create',(req,res)=>{
+    res.render('pages/create',{title:'Add New Blog'})
+});
+app.get('/about',(req,res)=>{
+    res.render('pages/about',{title:'About Us'})
+}); 
 app.get('/blog3',(req,res)=>{
     res.render('pages/blog3',{title:'Blog Details'})
 });
@@ -47,12 +53,6 @@ app.get('/blog4',(req,res)=>{
 app.get('/blog5',(req,res)=>{
     res.render('pages/blog5',{title:'Blog Details'})
 });
-app.get('/create',(req,res)=>{
-    res.render('pages/create',{title:'Add New Blog'})
-});
-app.get('/about',(req,res)=>{
-    res.render('pages/about',{title:'About Us'})
-}); 
 app.use((req,res)=>{ 
     res.status(404).render('pages/404',{title:'Not Found'})
 });
