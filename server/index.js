@@ -42,7 +42,7 @@ app.get('/create',(req,res)=>{
     res.render('pages/create',{title:'Add New Blog'})
 });
 app.get('/about',(req,res)=>{
-    res.render('pages/about',{title:'About Us'})
+    res.render('pages/about',{title:'About Us'}) 
 }); 
 app.get('/blog3',(req,res)=>{
     res.render('pages/blog3',{title:'Blog Details'})
